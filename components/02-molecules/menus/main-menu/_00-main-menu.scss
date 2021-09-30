@@ -1,6 +1,11 @@
 /* Menu media */
 $main-menu-medium: $medium;
 
+/* Parent element */
+.header__menu {
+  flex-grow: 2;
+}
+
 /* Nav */
 .main-nav {
   display: none;

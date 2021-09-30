@@ -1,3 +1,39 @@
+// .user-menu {
+//   @include list-reset;
+// }
+
+// .user-menu__item {
+//   margin: 0 1em 0.5em 0;
+
+//   @include large {
+//     display: inline;
+//     margin-bottom: 1em;
+//   }
+
+//   &:last-child {
+//     margin-right: 0;
+//   }
+// }
+
+// .user-menu__link {
+//   @include link;
+
+//   font-size: 0.75rem;
+//   font-weight: 400;
+//   letter-spacing: 1.5px;
+//   text-decoration: none;
+//   text-transform: uppercase;
+// }
+
+.user-menu {
+  @include list-reset;
+}
+
+.user-menu__link {
+  text-decoration: none;
+  color: clr(text-inverse);
+}
+
 // Sass map to define colors. Each set should have a "Dark" variation when required.
 // e.g. `default` and `default-dark`. Or `purple` and `purple-dark`.
 $button-colors: (
@@ -92,7 +128,7 @@ $button-colors: (
   padding: $space $space-double;
 }
 
-.button {
+.user-menu__item {
   @include button-base;
   @include button-color-primary;
   @include button-medium;
@@ -101,4 +137,8 @@ $button-colors: (
     @include button-color-secondary;
     @include button-large;
   }
+}
+
+.user-menu__item + .user-menu__item {
+  margin-left: 1rem;
 }

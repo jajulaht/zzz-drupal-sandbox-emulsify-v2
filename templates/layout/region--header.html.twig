@@ -15,5 +15,8 @@
 {% extends "@organisms/site/site-header/site-header.twig" %}
 
 {% block header__menu %}
-  {{ content }}
+  {{ elements.emulsify_sandbox_main_menu }}
+{% endblock %}
+{% block user__menu %}
+  {{ elements.emulsify_sandbox_account_menu }}
 {% endblock %}
