@@ -11,12 +11,13 @@
   &__primary {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: $space 0;
   }
 
   &__branding {
-    margin-right: $space;
-    max-width: 300px;
+    margin-right: $space-quadruple;
+    margin-top: $space-two-thirds;
+    max-width: 180px;
   }
 }

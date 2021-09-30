@@ -1,5 +1,6 @@
 .footer {
-  background-color: clr(highlight-high);
+  background-color: clr(background);
+  border-top: 1px solid clr(background-section);
   padding: $space 0;
 
   &__inner {

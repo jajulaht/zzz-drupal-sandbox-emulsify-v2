@@ -6,9 +6,12 @@
  * components/00-base/base/_breakpoints.css
 */
 
+// Typography
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
 // Fonts
-$font-body: georgia, times, 'Times New Roman', serif;
-$font-heading: 'HelveticaNeue', 'Helvetica', 'Arial', sans-serif;
+$font-body: 'Inter', 'Helvetica', 'Arial', sans-serif;
+$font-heading: 'Inter', 'Helvetica', 'Arial', sans-serif;
 
 // Spacing
 $space: 1rem;
@@ -22,6 +25,8 @@ $space-sextuple: $space * 6;
 $space-septuple: $space * 7;
 
 // Divided
+$space-four-fifths: $space/5 * 4;
+$space-two-thirds: $space/3 * 2;
 $space-one-half: $space/2;
 $space-one-third: $space/3;
 $space-one-fourth: $space/4;
