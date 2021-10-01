@@ -6,9 +6,8 @@
   &__inner {
     @include wrapper;
 
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
     @include large {
       flex-direction: row;
@@ -25,22 +24,15 @@
   }
 }
 
-.footer__menu, .footer__powered-menu {
-  flex: 3 1 auto;
-}
-
 .footer__powered-menu p {
   margin: 0.3rem 0;
   width: 100%;
 }
 
-.footer__search-menu {
-  flex: 4 1 auto;
-}
-
 .search-form-with-logo {
   img {
     max-width: 10rem;
+    margin: 0;
   }
   .form-item__textfield {
     border-radius: 0.2rem 0 0 0.2rem;
@@ -55,6 +47,7 @@
       margin: 0;
       padding: 0;
       height: 2.5rem;
+      flex-grow: 0;
 
       input {
         height: 2.5rem;
