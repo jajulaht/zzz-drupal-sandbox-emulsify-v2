@@ -1,13 +1,14 @@
 .footer {
   background-color: clr(background);
   border-top: 1px solid clr(background-section);
-  padding: $space 0;
+  padding: $space-quadruple 0;
 
   &__inner {
     @include wrapper;
 
     display: flex;
     flex-flow: column nowrap;
+    justify-content: space-between;
 
     @include large {
       flex-direction: row;
@@ -19,16 +20,38 @@
   margin-bottom: $space;
 
   @include large {
-    flex: 0 1 30%;
     margin-bottom: 0;
     margin-right: $space;
   }
 }
 
-.footer__menu {
-  @include large {
-    flex: 1 1 100%;
-    margin-left: auto;
-    text-align: right;
-  }
+.footer__menu, .footer__powered-menu {
+  flex: 3 1 auto;
+}
+
+.footer__powered-menu p {
+  margin: 0.3rem 0;
+  width: 100%;
+}
+
+.footer__search-menu {
+  flex: 4 1 auto;
+}
+
+.search-form-with-logo img {
+  max-width: 10rem;
+}
+
+.footer-search-form {
+  display: flex;
+}
+
+.footer-search-form div {
+  margin: 0;
+  padding: 0;
+  height: 2.5rem;
+}
+
+.footer-search-form div input {
+  height: 2.5rem;
 }

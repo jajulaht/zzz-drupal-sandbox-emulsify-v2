@@ -4,3 +4,11 @@
  * @file
  * Functions to support theming.
  */
+
+/**
+ * Prepare link to the logo image
+ */
+function emulsify_sandbox_preprocess_block(&$variables) {
+  $host = \Drupal::request()->getSchemeAndHttpHost();
+  $variables['logo_path'] = $host . "/themes/custom/emulsify_sandbox/images/logo.png";
+}

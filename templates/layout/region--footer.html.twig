@@ -12,8 +12,18 @@
  * @see template_preprocess_region()
  */
 #}
+
 {% extends "@organisms/site/site-footer/site-footer.twig" %}
 
-{% block footer__menu %}
-  {{ content }}
+{% block footer__main_menu %}
+  {{ elements.emulsify_sandbox_footer }}
+{% endblock %}
+{% block footer___powered_menu %}
+  {{ elements.emulsify_sandbox_powered }}
+{% endblock %}
+{% block footer___search_menu %}
+  {{ elements.emulsify_sandbox_search }}
+{% endblock %}
+{% block footer__social %}
+  {{ elements.emulsify_sandbox_social }}
 {% endblock %}

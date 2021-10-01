@@ -2,14 +2,26 @@
 
 <footer {{ bem(footer__base_class) }}>
   <div {{ bem('inner', [], footer__base_class) }}>
+    <div {{ bem('menu', [], footer__base_class) }}>
+      {% block footer__main_menu %}
+        {% include "@molecules/menus/inline/inline-menu.twig" %}
+      {% endblock %}
+    </div>
+    <div {{ bem('powered-menu', [], footer__base_class) }}>
+      {% block footer___powered_menu %}
+        {% include "@molecules/menus/inline/inline-menu.twig" %}
+      {% endblock %}
+    </div>
+    <div {{ bem('search-menu', [], footer__base_class) }}>
+      {% block footer___search_menu %}
+        {% include "@molecules/menus/inline/inline-menu.twig" %}
+      {% endblock %}
+    </div>
+  </div>
+  <div {{ bem('outer', [], footer__base_class) }}>
     <div {{ bem('social', [], footer__base_class) }}>
       {% block footer__social %}
         {% include "@molecules/menus/social/social-menu.twig" %}
-      {% endblock %}
-    </div>
-    <div {{ bem('menu', [], footer__base_class) }}>
-      {% block footer__menu %}
-        {% include "@molecules/menus/inline/inline-menu.twig" %}
       {% endblock %}
     </div>
   </div>
