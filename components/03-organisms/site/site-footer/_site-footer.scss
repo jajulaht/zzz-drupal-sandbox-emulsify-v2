@@ -13,6 +13,10 @@
       flex-direction: row;
     }
   }
+
+  &__outer {
+    @include wrapper;
+  }
 }
 
 .footer__social {
@@ -20,7 +24,6 @@
 
   @include large {
     margin-bottom: 0;
-    margin-right: $space;
   }
 }
 

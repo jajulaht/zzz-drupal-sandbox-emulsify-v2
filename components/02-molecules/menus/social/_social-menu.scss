@@ -1,8 +1,12 @@
 .social-menu {
   @include list-reset;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: flex-end;
 
   &__item {
     margin-bottom: $space-one-fourth;
+    margin-left: 2rem;
   }
 
   &__link {
