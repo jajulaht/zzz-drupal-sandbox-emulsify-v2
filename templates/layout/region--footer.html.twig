@@ -25,5 +25,9 @@
   {{ elements.emulsify_sandbox_search }}
 {% endblock %}
 {% block footer__social %}
-  {{ elements.socialmedia }}
+  {% include "@molecules/menus/social/social-menu.twig"
+  with {
+    social_menu_items: some_channels,
+  }
+%}
 {% endblock %}

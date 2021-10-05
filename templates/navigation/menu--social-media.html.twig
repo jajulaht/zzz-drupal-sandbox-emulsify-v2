@@ -18,6 +18,13 @@
  *   - in_active_trail: TRUE if the link is in the active trail.
  */
 #}
-{% include "@molecules/menus/_menu.twig" with {
+{# {% include "@molecules/menus/_menu.twig" with {
   menu_class: "social-menu"
-} %}
+} %} #}
+{# {{ dpm() }}
+{% embed "@molecules/menus/social/social-menu.twig" %}
+  {% block social_menu_content %}
+    {{ content }}
+  {% endblock %}
+{% endembed %} #}
+Kukkuu

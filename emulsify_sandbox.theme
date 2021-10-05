@@ -4,6 +4,7 @@
  * @file
  * Functions to support theming.
  */
+use Drupal\config_pages\Entity\ConfigPages;
 
 /**
  * Prepare link to the logo image
@@ -11,4 +12,44 @@
 function emulsify_sandbox_preprocess_block(&$variables) {
   $host = \Drupal::request()->getSchemeAndHttpHost();
   $variables['logo_path'] = $host . "/themes/custom/emulsify_sandbox/images/logo.png";
+}
+
+/**
+ * Prepares variables for footer region.
+ *
+ * Default template: region--footer.html.twig
+ */
+function emulsify_sandbox_preprocess_region__footer(&$variables) {
+  // Facebook
+  $facebook_data = ConfigPages::config('facebook');
+  $fb_link_field = $facebook_data->get('field_facebook_link');
+  $facebook = [
+    "title" => $fb_link_field[0]->get('title')->getValue(),
+    "url" => $fb_link_field[0]->get('uri')->getValue(),
+    "icon" => $facebook_data->get('field_facebook_icon')->value,
+  ];
+  // Twitter
+  $twitter_data = ConfigPages::config('twitter');
+  $twitter_link_field = $twitter_data->get('field_facebook_link');
+  $twitter = [
+    "title" => $twitter_link_field[0]->get('title')->getValue(),
+    "url" => $twitter_link_field[0]->get('uri')->getValue(),
+    "icon" => $twitter_data->get('field_facebook_icon')->value,
+  ];
+  // Instagram
+  $instagram_data = ConfigPages::config('instagram');
+  $insta_link_field = $instagram_data->get('field_facebook_link');
+  $instagram = [
+    "title" => $insta_link_field[0]->get('title')->getValue(),
+    "url" => $insta_link_field[0]->get('uri')->getValue(),
+    "icon" => $instagram_data->get('field_facebook_icon')->value,
+  ];
+  // Compile array of channels
+  $channels = [
+    $facebook, 
+    $twitter,
+    $instagram,
+  ];
+  //dpm($channels);
+  $variables['some_channels'] = $channels;
 }
