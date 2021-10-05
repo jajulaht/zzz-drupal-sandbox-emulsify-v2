@@ -1,0 +1,35 @@
+.two-col-layout {
+  padding: $space-plus-one-half;
+  
+  @include large {
+    display: flex;
+  }
+
+  &--pink {
+    background-color: $pink;
+  }
+
+  &__content-right,
+  &__content-left {
+    @include large {
+      width: 50%;
+    }
+  }
+
+  &__content-left {
+    padding-right: $space;
+
+    @include large-down {
+      padding-right: 0;
+      padding-bottom: $space;
+    }
+  }
+
+  &__content-right {
+    padding-left: $space;
+
+    @include large-down {
+      padding: 0;
+    }
+  }
+}
