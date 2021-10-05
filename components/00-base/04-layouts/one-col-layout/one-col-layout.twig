@@ -1,0 +1,7 @@
+{% set one_col_layout_base_class = one_col_layout_base_class|default('one-col-layout') %}
+
+<div {{ bem(one_col_layout_base_class, (one_col_layout_modifiers), one_col_layout_blockname) }}>
+  {% block one_col_layout_content %}
+    {{ content }}
+  {% endblock %}
+</div>

@@ -1,0 +1,14 @@
+{% set two_col_layout_base_class = two_col_layout_base_class|default('two-col-layout') %}
+
+<div {{ bem(two_col_layout_base_class, (two_col_layout_modifiers), two_col_layout_blockname) }}>
+  <div {{ bem('content-left', two_col_layout_modifiers, two_col_layout_base_class) }}>
+    {% block two_col_layout_content_left %}
+      {{ content_left }}
+    {% endblock %}
+  </div>
+   <div {{ bem('content-right', two_col_layout_modifiers, two_col_layout_base_class) }}>
+    {% block two_col_layout_content_right %}
+      {{ content_right }}
+    {% endblock %}
+  </div>
+</div>
