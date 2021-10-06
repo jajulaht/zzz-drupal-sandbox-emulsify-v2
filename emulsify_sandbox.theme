@@ -5,6 +5,7 @@
  * Functions to support theming.
  */
 use Drupal\config_pages\Entity\ConfigPages;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Prepare link to the logo image
@@ -50,6 +51,25 @@ function emulsify_sandbox_preprocess_region__footer(&$variables) {
     $twitter,
     $instagram,
   ];
-  //dpm($channels);
   $variables['some_channels'] = $channels;
+}
+
+/**
+ * Prepares variables for the hero paragraph with text and image sides.
+ *
+ * Default template: paragraph--hero-50-50-text-image--default.html.twig.
+ */
+function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&$variables) {
+  $paragraph_text = Paragraph::load(1);
+  $paragraph_image = Paragraph::load(2);
+  $p_fields = [
+    "hero_image_src" => $paragraph_image->field_hero_image->value,
+    "hero_image_alt" => $paragraph_image->field_text_content->value,
+    "hero_image_output_image_tag:" => TRUE,
+    "hero_title_content" => $paragraph_text->field_hero_title->value,
+    "hero_text_content" => $paragraph_text->field_hero_text->value,
+    "hero_button_text" => $paragraph_text->field_hero_button->value,
+  ];
+  dpm($paragraph_image);
+  dpm($p_fields);
 }
