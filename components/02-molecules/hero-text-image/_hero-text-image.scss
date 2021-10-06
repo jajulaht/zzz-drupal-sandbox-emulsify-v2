@@ -1,0 +1,35 @@
+.hero-divided-container {
+
+  @include large {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .hero-divided-text {
+    padding-right: $space-double;
+
+    @include large {
+      width: 45%;
+    }
+  }
+  .hero-divided-image {
+    @include large {
+      width: 55%;
+    }
+  }
+  .hero-divided-container__heading {
+    @include large {
+      font-size: 3rem;
+      line-height: 3rem;
+    }
+  }
+  .hero-divided-container__text {
+    margin-bottom: $space-double-one-half;
+    font-size: 1.2rem;
+  }
+  .button {
+    padding: 1rem 1.2rem;
+  }
+}

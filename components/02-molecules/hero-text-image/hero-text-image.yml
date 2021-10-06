@@ -5,8 +5,8 @@ hero_image_alt:
 hero_image_output_image_tag:
   TRUE
 hero_title_content:
-  "This is the title"
+  "This is the title that can be quite long text"
 hero_text_content:
-  "This is the text content!"
+  "This is the text content that can be short!"
 hero_button_text:
   "Do something"
