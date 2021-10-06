@@ -19,13 +19,13 @@
       width: 55%;
     }
   }
-  .hero-divided-container__heading {
+  .hero-divided__heading {
     @include large {
       font-size: 3rem;
       line-height: 3rem;
     }
   }
-  .hero-divided-container__text {
+  .hero-divided__text {
     margin-bottom: $space-double-one-half;
     font-size: 1.2rem;
   }
