@@ -1,4 +1,4 @@
-.hero-divided-container {
+.hero-divided {
 
   @include large {
     display: flex;
@@ -7,14 +7,14 @@
     align-items: center;
   }
 
-  .hero-divided-text {
+  .content-left {
     padding-right: $space-double;
 
     @include large {
       width: 45%;
     }
   }
-  .hero-divided-image {
+  .content-right {
     @include large {
       width: 55%;
     }

@@ -40,10 +40,10 @@
 #}
 {% embed "@molecules/hero-text-image/hero-text-image.twig" %}
   {% block hero_text_content %}
-    {{ content }}
+    {{ content.field_text_content }}
   {% endblock %}
   {% block hero_image_content %}
-    {{ content }}
+    {{ content.field_hero_image }}
   {% endblock %}
 {% endembed %}
 

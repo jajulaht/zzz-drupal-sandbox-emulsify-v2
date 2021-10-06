@@ -1,10 +1,10 @@
-{% set hero_divided_base_class = 'hero-divided-container' %}
+{% set hero_divided_base_class = 'hero-divided' %}
 {% set hero_divided_textcontent_base_class = 'hero-divided-text' %}
 {% set hero_divided_imagecontent_base_class = 'hero-divided-image' %}
 
 <div {{ bem(hero_divided_base_class, (hero_divided_modifiers), hero_divided_blockname) }}>
   {% block hero_divided_content %}
-    <div {{ bem(hero_divided_textcontent_base_class, (hero_divided_modifiers), hero_divided_blockname) }}>
+    <div {{ bem('content-left', (hero_divided_modifiers), hero_divided_blockname) }}>
         {% block hero_text_content %}
           {% include "@atoms/text/headings/_heading.twig" with {
             heading_base_class: hero_divided_heading_base_class|default('heading'),
@@ -24,7 +24,7 @@
           } %}
         {% endblock %}
     </div>
-    <div {{ bem(hero_divided_imagecontent_base_class, (hero_divided_modifiers), hero_divided_blockname) }}>
+    <div {{ bem('content-right', (hero_divided_modifiers), hero_divided_blockname) }}>
       {% block hero_image_content %}
         {% include "@atoms/images/image/responsive-image.twig" with {
           image_src: hero_image_src,
