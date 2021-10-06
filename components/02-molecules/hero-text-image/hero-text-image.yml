@@ -1,0 +1,12 @@
+hero_image_src:
+  "https://placeimg.com/1280/720/nature"
+hero_image_alt:
+  "This is the hero image's alt text"
+hero_image_output_image_tag:
+  TRUE
+hero_title_content:
+  "This is the title"
+hero_text_content:
+  "This is the text content!"
+hero_button_text:
+  "Do something"
