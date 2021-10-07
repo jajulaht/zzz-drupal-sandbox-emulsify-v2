@@ -38,14 +38,22 @@
  * @ingroup themeable
  */
 #}
-{% embed "@molecules/hero-text-image/hero-text-image.twig" %}
-  {% block hero_text_content %}
-    {{ content.field_text_content }}
+{# {{ dpm(hero_paragraph_fields.hero_image) }} #}
+{% include "@molecules/hero-text-image/hero-text-image.twig" with {
+  hero_title_content: hero_paragraph_fields.hero_text.hero_title_content,
+  hero_text_content: hero_paragraph_fields.hero_text.hero_text_content,
+  hero_buttons: hero_paragraph_fields.hero_text.hero_buttons,
+  hero_image_src: hero_paragraph_fields.hero_image.hero_image_src,
+  hero_image_alt: hero_paragraph_fields.hero_image.hero_image_alt,
+  hero_output_image_tag: hero_image_output_image_tag,
+} %}
+  {# {% block hero_text_content %}
+    {{ hero_paragraph_fields.hero_text }}
   {% endblock %}
-  {% block hero_image_content %}
-    {{ content.field_hero_image }}
-  {% endblock %}
-{% endembed %}
+  {% block hero_image_content %} #}
+    {# {{ hero_paragraph_fields.hero_image }} #}
+  {# {% endblock %} #}
+{# {% endembed %} #}
 
 {# {{ dpm(content) }}
 {%
