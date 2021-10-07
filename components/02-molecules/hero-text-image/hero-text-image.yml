@@ -8,5 +8,8 @@ hero_title_content:
   "This is the title that can be quite long text"
 hero_text_content:
   "This is the text content that can be short!"
-hero_button_text:
-  "Do something"
+hero_buttons:
+  - title: 'Do something'
+    url: '#'
+  - title: 'Something else'
+    url: '#'

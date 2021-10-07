@@ -17,9 +17,14 @@
             paragraph_blockname: hero_divided_base_class,
             paragraph_content: hero_text_content,
           } %}
-          {% include "@atoms/buttons/button.twig" with {
-            button_content: hero_button_text,
-          } %}
+          {% block hero_button_content %}
+            {% for hero_button in hero_buttons %}
+              {% include "@atoms/buttons/button.twig" with {
+                button_content: hero_button.title,
+                button_url: hero_button.url,
+              } %}
+            {% endfor %}
+          {% endblock %}
         {% endblock %}
     </div>
     <div {{ bem('content-right', (hero_divided_modifiers), hero_divided_blockname) }}>
