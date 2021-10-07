@@ -62,14 +62,23 @@ function emulsify_sandbox_preprocess_region__footer(&$variables) {
 function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&$variables) {
   $paragraph_text = Paragraph::load(1);
   $paragraph_image = Paragraph::load(2);
+  $buttons = $paragraph_text->field_hero_button;
+  $buttons_data = [];
+  foreach ($buttons as $btn) {
+    $btn_data = [
+      "title" => $btn->get('title')->getValue(),
+      "url" => $btn->get('uri')->getValue(),
+    ];
+    array_push($buttons_data, $btn_data);
+  }
   $p_fields = [
     "hero_image_src" => $paragraph_image->field_hero_image->value,
     "hero_image_alt" => $paragraph_image->field_text_content->value,
     "hero_image_output_image_tag:" => TRUE,
     "hero_title_content" => $paragraph_text->field_hero_title->value,
-    "hero_text_content" => $paragraph_text->field_hero_text->value,
-    "hero_button_text" => $paragraph_text->field_hero_button->value,
+    "hero_buttons" => $buttons_data,
   ];
   dpm($paragraph_image);
+  dpm($buttons_data);
   dpm($p_fields);
 }
