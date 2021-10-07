@@ -1,4 +1,5 @@
 .hero-divided {
+  margin-bottom: $space-quadruple;
 
   @include large {
     display: flex;

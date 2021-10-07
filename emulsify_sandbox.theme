@@ -8,6 +8,8 @@ use Drupal\config_pages\Entity\ConfigPages;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
+use Drupal\Core\Entity\ContentEntityInterface;
+
 
 /**
  * Prepare link to the logo image
@@ -66,12 +68,16 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
   $image_data = Paragraph::load(2)->field_hero_image->getValue();
   $image_alt = $image_data[0]['alt'];
   $image_id = $image_data[0]['target_id'];
+  $image_data_from_vars = $variables['content']['field_hero_image']['#object']->get('field_hero_image')->getValue();
+  dpm($image_data);
+  dpm($image_data_from_vars);
+  dpm($variables);
   // Get image url
-  // $media = Media::load($image_id);
+  $media = Media::load($image_id);
   // $fid = $media->getSource()->getSourceFieldValue($media);
   // $file = File::load($fid);
   // $url = $file->url();
-  // dpm($media);
+  dpm($media);
   $img = File::load($image_id);
   // dpm($img);
   $img_url = $img->getFileUri();
