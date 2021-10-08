@@ -98,11 +98,7 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
 
   // Get image
   $img_field = $paragraph->get('field_hero_image_media');
-  $node = $img_field->entity;
-  $field_media = $node->get('field_media_image');
-  $item_image = _emulsify_sandbox_construct_node_media_field($field_media, 'hero_image');
-
-  $image_alt = $field_media[0]->get('alt')->getValue();
+  $item_image = _emulsify_sandbox_construct_node_media_field($img_field, 'hero_image');
 
   // Buttons array
   $buttons = $field_hero_buttons;
