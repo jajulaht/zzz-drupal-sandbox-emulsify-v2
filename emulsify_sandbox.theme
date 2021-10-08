@@ -64,14 +64,14 @@ function emulsify_sandbox_preprocess_region__footer(&$variables) {
  * Default template: paragraph--hero-50-50-text-image--default.html.twig.
  */
 function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&$variables) {
-  $paragraph_text = Paragraph::load(1);
-  $image_data = Paragraph::load(2)->field_hero_image->getValue();
-  $image_alt = $image_data[0]['alt'];
-  $image_id = $image_data[0]['target_id'];
-  $image_data_from_vars = $variables['content']['field_hero_image']['#object']->get('field_hero_image')->getValue();
-  dpm($image_data);
-  dpm($image_data_from_vars);
-  dpm($variables);
+  //$paragraph_text = Paragraph::load(1);
+  // Load text data from variables
+  $text_data_from_vars = $variables['elements']['field_text_content'][0]['#paragraph'];
+  //$image_data = Paragraph::load(2)->field_hero_image->getValue();
+  // Load image data from variables
+  $image_data_from_vars = $variables['elements']['field_hero_image'][0]['#item'];
+  $image_alt = $image_data_from_vars->get('alt')->getValue();
+  $image_id = $image_data_from_vars->get('target_id')->getValue();
   // Get image url
   $media = Media::load($image_id);
   // $fid = $media->getSource()->getSourceFieldValue($media);
@@ -82,7 +82,7 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
   // dpm($img);
   $img_url = $img->getFileUri();
   // Buttons array
-  $buttons = $paragraph_text->field_hero_button;
+  $buttons = $text_data_from_vars->field_hero_button;
   $buttons_data = [];
   foreach ($buttons as $btn) {
     $btn_data = [
@@ -99,8 +99,8 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
       "hero_image_output_image_tag" => TRUE,
     ],
     "hero_text" => [
-      "hero_title_content" => $paragraph_text->field_hero_title->value,
-      "hero_text_content" => $paragraph_text->field_hero_text->value,
+      "hero_title_content" => $text_data_from_vars->field_hero_title->value,
+      "hero_text_content" => $text_data_from_vars->field_hero_text->value,
       "hero_buttons" => $buttons_data,
     ],
   ];
