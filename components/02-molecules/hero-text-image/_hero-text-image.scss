@@ -19,6 +19,10 @@
     @include large {
       width: 55%;
     }
+
+    img {
+      width: 100%;
+    }
   }
   .hero-divided__heading {
     @include large {
