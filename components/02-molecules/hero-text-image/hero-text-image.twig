@@ -28,9 +28,8 @@
         {% endblock %}
     </div>
     <div {{ bem('content-right', (hero_divided_modifiers), hero_divided_blockname) }}>
-    {{ dpm(hero_image) }}
       {% block hero_image_content %}
-        {# {{ hero_image }} #}
+        {{ hero_image }}
         {# {% include "@atoms/images/image/responsive-image.twig" with {
           image_src: hero_image_src,
           image_alt: hero_image_alt,
