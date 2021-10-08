@@ -38,14 +38,12 @@
  * @ingroup themeable
  */
 #}
-{# {{ dpm(hero_paragraph_fields.hero_image) }} #}
+{# {{ dpm(hero_paragraph_fields) }} #}
 {% include "@molecules/hero-text-image/hero-text-image.twig" with {
   hero_title_content: hero_paragraph_fields.hero_text.hero_title_content,
   hero_text_content: hero_paragraph_fields.hero_text.hero_text_content,
   hero_buttons: hero_paragraph_fields.hero_text.hero_buttons,
-  hero_image_src: hero_paragraph_fields.hero_image.hero_image_src,
-  hero_image_alt: hero_paragraph_fields.hero_image.hero_image_alt,
-  hero_output_image_tag: hero_image_output_image_tag,
+  hero_image: hero_paragraph_fields.hero_image,
 } %}
   {# {% block hero_text_content %}
     {{ hero_paragraph_fields.hero_text }}

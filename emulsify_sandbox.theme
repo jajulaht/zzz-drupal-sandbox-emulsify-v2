@@ -59,30 +59,85 @@ function emulsify_sandbox_preprocess_region__footer(&$variables) {
 }
 
 /**
+ * Constructs media field for liftups.
+ *
+ * @param \Drupal\Core\Field\FieldItemListInterface $image_field
+ *   Node's image field.
+ * @param string $view_mode_machine_name
+ *   String of the wanted media view mode.
+ * @param string $placeholder_config_page_machine_name
+ *   String of the placeholder image config page related
+ *   to content calling this helper function.
+ *
+ * @return array $media_render_array
+ *   Rendered media array with view mode.
+ */
+function _emulsify_sandbox_construct_node_media_field($field_media, $view_mode_machine_name, $placeholder_config_page_machine_name) {
+  $placeholder_image_config = ConfigPages::config($placeholder_config_page_machine_name);
+  $placeholder_image_field = $placeholder_image_config->get('field_placeholder_image');
+
+  // dpm($placeholder_image_field);
+
+  // If node's media field is not empty, we will use that media to
+  // build liftup image. If it's empty we try to get image from
+  // placeholder image config page.
+  $approved_media_field = NULL;
+
+  if ($field_media !== NULL && !$field_media->isEmpty()) {
+    $approved_media_field = $field_media;
+  }
+  elseif (!$placeholder_image_field->isEmpty() && $placeholder_image_field->entity instanceof Media) {
+    $approved_media_field = $placeholder_image_field;
+  }
+
+  // If both media fields were empty we wont add media field to liftup
+  // item array, but use image src instead to build placeholder image
+  // to liftup.
+  if ($approved_media_field !== NULL) {
+    $media_entities = $approved_media_field->referencedEntities();
+    $media_entity = reset($media_entities);
+    $media_render_array = \Drupal::entityTypeManager()->getViewBuilder('media')->view($media_entity, $view_mode_machine_name);
+
+    return $media_render_array;
+  }
+  else {
+    return NULL;
+  }
+}
+
+/**
  * Prepares variables for the hero paragraph with text and image sides.
  *
  * Default template: paragraph--hero-50-50-text-image--default.html.twig.
  */
 function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&$variables) {
-  // No need to use this: $paragraph_text = Paragraph::load(1);
-  // Load text data from variables
-  $text_data_from_vars = $variables['elements']['field_text_content'][0]['#paragraph'];
-  // No need to use this: $image_data = Paragraph::load(2)->field_hero_image->getValue();
-  // Load image data from variables
-  $image_data_from_vars = $variables['elements']['field_hero_image'][0]['#item'];
-  $image_alt = $image_data_from_vars->get('alt')->getValue();
-  $image_id = $image_data_from_vars->get('target_id')->getValue();
-  // Get image url
-  $media = Media::load($image_id);
-  // $fid = $media->getSource()->getSourceFieldValue($media);
-  // $file = File::load($fid);
-  // $url = $file->url();
-  dpm($media);
+  $paragraph = $variables['paragraph'];
+  
+  // Test part of hero
+  $text_field = $paragraph->get('field_text_content')->entity;
+  $field_hero_buttons = $text_field->get('field_hero_button');
+  $field_hero_title = $text_field->get('field_hero_title')[0]->value;
+  $field_hero_text = $text_field->get('field_hero_text')[0]->value;
+
+  // Get image
+  $img_field = $paragraph->get('field_hero_image_media');
+  $node = $img_field->entity;
+  $field_media = $node->get('field_media_image');
+  // dpm($field_media);
+
+  $item_image = _emulsify_sandbox_construct_node_media_field($field_media, 'hero_image', 'placeholder_image');
+
+  // dpm($item_image);
+
+  // To be replaced
+  $image_id = $field_media[0]->get('target_id')->getValue();
   $img = File::load($image_id);
-  // dpm($img);
   $img_url = $img->getFileUri();
+
+  $image_alt = $field_media[0]->get('alt')->getValue();
+
   // Buttons array
-  $buttons = $text_data_from_vars->field_hero_button;
+  $buttons = $field_hero_buttons;
   $buttons_data = [];
   foreach ($buttons as $btn) {
     $btn_data = [
@@ -93,14 +148,10 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
   }
   // Collect all fields
   $p_fields = [
-    "hero_image" => [
-      "hero_image_alt" => $image_alt,
-      "hero_image_src" => $img_url,
-      "hero_image_output_image_tag" => TRUE,
-    ],
+    "hero_image" => $item_image,
     "hero_text" => [
-      "hero_title_content" => $text_data_from_vars->field_hero_title->value,
-      "hero_text_content" => $text_data_from_vars->field_hero_text->value,
+      "hero_title_content" => $field_hero_title,
+      "hero_text_content" => $field_hero_text,
       "hero_buttons" => $buttons_data,
     ],
   ];
