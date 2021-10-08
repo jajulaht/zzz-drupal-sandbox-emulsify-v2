@@ -29,13 +29,7 @@
     </div>
     <div {{ bem('content-right', (hero_divided_modifiers), hero_divided_blockname) }}>
       {% block hero_image_content %}
-        {% include "@atoms/images/image/responsive-image.twig" with {
-          image_src: hero_image_src,
-          image_alt: hero_image_alt,
-          responsive_image_blockname: hero_image_base_class,
-          responsive_image_base_class: 'image',
-          output_image_tag: hero_image_output_image_tag,
-        } %}
+        {{ content.field_hero_image }}
       {% endblock %}
     </div>
   {% endblock %}

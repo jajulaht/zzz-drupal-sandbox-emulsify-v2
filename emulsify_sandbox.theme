@@ -64,10 +64,10 @@ function emulsify_sandbox_preprocess_region__footer(&$variables) {
  * Default template: paragraph--hero-50-50-text-image--default.html.twig.
  */
 function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&$variables) {
-  //$paragraph_text = Paragraph::load(1);
+  // No need to use this: $paragraph_text = Paragraph::load(1);
   // Load text data from variables
   $text_data_from_vars = $variables['elements']['field_text_content'][0]['#paragraph'];
-  //$image_data = Paragraph::load(2)->field_hero_image->getValue();
+  // No need to use this: $image_data = Paragraph::load(2)->field_hero_image->getValue();
   // Load image data from variables
   $image_data_from_vars = $variables['elements']['field_hero_image'][0]['#item'];
   $image_alt = $image_data_from_vars->get('alt')->getValue();

@@ -39,5 +39,12 @@
     border: 1px solid clr(primary);
     padding: calc( 1rem - 1px ) calc( 1.2rem - 1px );
     margin-left: 1rem;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+  .button:last-child:hover {
+    border: 2px solid clr(primary);
+    padding: calc( 1rem - 2px ) calc( 1.2rem - 2px );
   }
 }
