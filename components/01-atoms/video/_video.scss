@@ -1,8 +1,9 @@
 /* Responsive Video using CSS only */
-.video {
+.video,
+.field_embedded_video {
   height: 0;
   overflow: hidden;
-  padding-top: 35px;
+  padding-top: 0;
   padding-bottom: 56.25%; /* 56.25% = 16x9 */
   position: relative;
 
@@ -17,8 +18,4 @@
 
 .video--full {
   padding-bottom: 75%; /* 75% = 4x3 */
-}
-
-.remote-video {
-    height: 100%;
 }

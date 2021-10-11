@@ -38,7 +38,6 @@
  * @ingroup themeable
  */
 #}
-{{ dpm(content) }}
 {%
   set classes = [
     'paragraph',
@@ -54,10 +53,10 @@
     {% endblock %}
   </div>
 {% endblock paragraph %} #}
-<div{{ attributes.addClass(classes) }}>
+{# <div{{ attributes.addClass(classes) }}> #}
   {% include "@atoms/video/video.twig" with {
     video_base_class: "remote-video",
     video_modifiers: modifiers,
     video_content: content.field_embed_video,
   } %}
-</div>
+{# </div> #}
