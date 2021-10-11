@@ -121,3 +121,64 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
   ];
   $variables['hero_paragraph_fields'] = $p_fields;
 }
+
+/**
+ * Prepares variables for one column layout paragraph template.
+ *
+ * Default template: paragraph--one-col-layout.html.twig.
+ */
+function emulsify_sandbox_preprocess_paragraph__one_col_layout(&$variables) {
+  // Gets background color value from paragraphs' background color field.
+  $paragraph = $variables['elements']['#paragraph'];
+  // $color_field = $paragraph->get('field_background_color');
+  // $color_value = $color_field->getString();
+
+  // // Prepares background color modifiers for layout paragraph.
+  $modifiers = [];
+
+  // if ($color_value == '#ffcccc') {
+  //   $bg_color = 'pink';
+
+  //   array_push($modifiers, $bg_color);
+  // }
+
+  $variables['modifiers'] = $modifiers;
+}
+
+/**
+ * Prepares variables for two column layout paragraph template.
+ *
+ * Default template: paragraph--two-col-layout.html.twig.
+ */
+function emulsify_sandbox_preprocess_paragraph__two_col_layout(&$variables) {
+  // Gets background color value from paragraphs' background color field.
+  $paragraph = $variables['elements']['#paragraph'];
+  // $color_field = $paragraph->get('field_background_color');
+  // $color_value = $color_field->getString();
+
+  // // Prepares background color modifiers for layout paragraph.
+  $modifiers = [];
+
+  // if ($color_value == '#ffcccc') {
+  //   $bg_color = 'pink';
+
+  //   array_push($modifiers, $bg_color);
+  // }
+
+  $variables['modifiers'] = $modifiers;
+}
+
+/**
+ * Prepares variables for the embedded video paragraph.
+ *
+ * Default template: paragraph--embedded-video.html.twig.
+ */
+function emulsify_sandbox_preprocess_paragraph__embedded_video(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  if ($paragraph->getParentEntity()->bundle() === "two_col_layout") {
+    $variables['modifiers'] = ['two-col'];
+  } else {
+    $variables['modifiers'] = ['one-col'];
+  }
+}

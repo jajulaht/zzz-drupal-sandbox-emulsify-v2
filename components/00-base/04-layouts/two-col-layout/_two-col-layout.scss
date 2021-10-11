@@ -1,5 +1,5 @@
 .two-col-layout {
-  padding: $space-plus-one-half;
+  //padding: $space-plus-one-half;
   
   @include large {
     display: flex;
@@ -11,13 +11,20 @@
 
   &__content-right,
   &__content-left {
+    margin-top: $space-triple;
+    margin-bottom: $space-triple;
+
+    img {
+      width: 100%;
+    }
+
     @include large {
       width: 50%;
     }
   }
 
   &__content-left {
-    padding-right: $space;
+    padding-right: $space-double;
 
     @include large-down {
       padding-right: 0;
@@ -26,7 +33,7 @@
   }
 
   &__content-right {
-    padding-left: $space;
+    padding-left: $space-double;
 
     @include large-down {
       padding: 0;
