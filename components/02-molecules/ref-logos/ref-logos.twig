@@ -1,0 +1,21 @@
+{% set ref_logos__base_class = 'ref-logos' %}
+
+{% block paragraph_ref_logos %}
+  <div {{ bem(ref_logos__base_class, ref_logos__modifiers, ref_logos__blockname) }}>
+    <h2>{{ ref_logos__heading }}</h2>
+    <div {{ bem('ref-logos-row', ref_logos__modifiers, ref_logos__blockname) }}>
+      {% if ref_logos_paragraph_fields|default() %}
+        {{ ref_logos_paragraph_fields.ref_logos }}
+      {% else %}
+        {% for ref_logo in ref_logos__logos %}
+          {% include "@atoms/images/image/responsive-image.twig" with {
+            image_src: ref_logo.image_src,
+            image_alt: ref_logo.image_alt,
+            responsive_image_blockname: ref_logos_base_class,
+            responsive_image_base_class: 'image',
+        } %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

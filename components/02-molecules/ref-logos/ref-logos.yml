@@ -1,0 +1,7 @@
+ref_logos__heading:
+  "This is the title that can be quite long text"
+ref_logos__logos:
+  - image_alt: 'This is a logo'
+    image_src: 'https://www.w3.org/Icons/SVG/svg-w3c-h.svg'
+  - image_alt: 'This is a logo'
+    image_src: 'https://www.w3.org/Icons/SVG/svg-w3c-h.svg'

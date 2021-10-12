@@ -1,0 +1,38 @@
+.ref-logos {
+  background: clr(blue-very-light);
+  padding: 4rem 1rem 6rem;
+  border-radius: 1rem;
+  margin-bottom: 4rem;
+
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .75rem;
+    font-weight: 700;
+    color: clr(primary);
+    margin-bottom: 2rem;
+    letter-spacing: .1em;
+  }
+
+  .ref-logos-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 2.1rem;
+
+    .image {
+      height: inherit;
+      filter: grayscale(1);
+    }
+    .image+.image {
+      margin-left: $space-triple;
+    }
+    svg {
+      height: inherit;
+      filter: grayscale(1);
+    }
+    svg+svg {
+      margin-left: $space-triple;
+    }
+  }
+}

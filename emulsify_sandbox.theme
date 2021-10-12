@@ -72,8 +72,12 @@ function _emulsify_sandbox_construct_node_media_field($field_media, $view_mode_m
 
   if ($field_media !== NULL) {
     $media_entities = $field_media->referencedEntities();
-    $media_entity = reset($media_entities);
-    $media_render_array = \Drupal::entityTypeManager()->getViewBuilder('media')->view($media_entity, $view_mode_machine_name);
+    // $media_entity = reset($media_entities);
+    $media_render_array = [];
+    foreach ($media_entities as $media) {
+      $media_entity = \Drupal::entityTypeManager()->getViewBuilder('media')->view($media, $view_mode_machine_name);
+      array_push($media_render_array, $media_entity);
+    }
 
     return $media_render_array;
   }
@@ -120,6 +124,31 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
     ],
   ];
   $variables['hero_paragraph_fields'] = $p_fields;
+}
+
+/**
+ * Prepares variables for the reference logos paragraph.
+ *
+ * Default template: paragraph--ref-logos.html.twig.
+ */
+function emulsify_sandbox_preprocess_paragraph__ref_logos(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // Heading for the paragraph
+  $heading = $paragraph->get('field_ref_logos_heading')[0]->value;
+
+  // Get images
+  $logo_data = $paragraph->get('field_svg_image');
+  //dpm($logo_data[0]);
+  $logos = _emulsify_sandbox_construct_node_media_field($logo_data, 'logo_svg');
+  // dpm($logos);
+  // Collect all fields
+  $ref_logo_fields = [
+    "ref_logos" => $logos,
+    "heading" => $heading,
+  ];
+
+  $variables['ref_logos_paragraph_fields'] = $ref_logo_fields;
 }
 
 /**
