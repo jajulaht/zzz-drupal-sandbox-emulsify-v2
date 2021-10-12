@@ -78,7 +78,6 @@ function _emulsify_sandbox_construct_node_media_field($field_media, $view_mode_m
       $media_entity = \Drupal::entityTypeManager()->getViewBuilder('media')->view($media, $view_mode_machine_name);
       array_push($media_render_array, $media_entity);
     }
-
     return $media_render_array;
   }
   else {
@@ -123,6 +122,7 @@ function emulsify_sandbox_preprocess_paragraph__hero_50_50_text_image__default(&
       "hero_buttons" => $buttons_data,
     ],
   ];
+  
   $variables['hero_paragraph_fields'] = $p_fields;
 }
 
@@ -139,9 +139,8 @@ function emulsify_sandbox_preprocess_paragraph__ref_logos(&$variables) {
 
   // Get images
   $logo_data = $paragraph->get('field_svg_image');
-  //dpm($logo_data[0]);
   $logos = _emulsify_sandbox_construct_node_media_field($logo_data, 'logo_svg');
-  // dpm($logos);
+
   // Collect all fields
   $ref_logo_fields = [
     "ref_logos" => $logos,
